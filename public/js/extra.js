@@ -195,7 +195,7 @@ export function isValidURL (str) {
 export function parseMeta (md, edit, view, toc, tocAffix) {
   let lang = null
   let dir = null
-  let breaks = true
+  let breaks = false
   if (md && md.meta) {
     const meta = md.meta
     lang = meta.lang
@@ -225,10 +225,10 @@ export function parseMeta (md, edit, view, toc, tocAffix) {
     tocAffix.removeAttr('dir')
   }
   // breaks
-  if (typeof breaks === 'boolean' && !breaks) {
-    md.options.breaks = false
-  } else {
+  if (typeof breaks === 'boolean' && breaks) {
     md.options.breaks = true
+  } else {
+    md.options.breaks = false
   }
 }
 
@@ -977,7 +977,7 @@ function highlightRender (code, lang) {
 
 export const md = markdownit('default', {
   html: true,
-  breaks: true,
+  breaks: false,
   langPrefix: '',
   linkify: true,
   typographer: true,

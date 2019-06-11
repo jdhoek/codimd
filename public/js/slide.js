@@ -104,10 +104,10 @@ if (meta.dir && typeof meta.dir === 'string' && meta.dir === 'rtl') {
   options.rtl = false
 }
 // breaks
-if (typeof meta.breaks === 'boolean' && !meta.breaks) {
-  md.options.breaks = false
-} else {
+if (typeof meta.breaks === 'boolean' && meta.breaks) {
   md.options.breaks = true
+} else {
+  md.options.breaks = false
 }
 
 // options from URL query string
